@@ -17,7 +17,7 @@ resource "aws_route_table" "public-rt" {
 #Attaches public route-table to public subnets
 resource "aws_route_table_association" "public-rt-association" {
     count = length(aws_subnet.public.*.id)
-    subnet_id = element(aws_subnet.*.id, count.index)
+    subnet_id = element(aws_subnet.public.*.id, count.index)
     route_table_id = aws_route_table.public-rt.id
 }
 
@@ -36,6 +36,6 @@ resource "aws_route_table" "private-rt" {
 }
 resource "aws_route_table_association" "private-rt-association" {
     count = length(aws_subnet.private.*.id)
-    subnet_id = element(aws_subnet.*.id, count.index)
+    subnet_id = element(aws_subnet.private.*.id, count.index)
     route_table_id = aws_route_table.private-rt.id
 }
