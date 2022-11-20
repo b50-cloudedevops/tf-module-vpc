@@ -4,7 +4,7 @@ resource "aws_subnet" "public" {
     cidr_block = element(var.PUBLIC_SUBNET_CIDR, count.index)
     availability_zone = element(var.AZ, count.index)
     tags = {
-        Name = "${var.ENV}-${element(var.AZ, count.index)}"
+        Name = "${var.ENV}-public-${element(var.AZ, count.index)}"
     }
 }
 resource "aws_subnet" "private" {
@@ -13,6 +13,6 @@ resource "aws_subnet" "private" {
     cidr_block = element(var.PRIVATE_SUBNET_CIDR, count.index)
     availability_zone = element(var.AZ, count.index)
     tags = {
-        Name = "${var.ENV}-${element(var.AZ, count.index)}"
+        Name = "${var.ENV}-private-${element(var.AZ, count.index)}"
     }
 }
