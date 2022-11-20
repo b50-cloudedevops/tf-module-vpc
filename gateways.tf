@@ -6,7 +6,7 @@ resource "aws_internet_gateway" "igw" {
     }
 }
 # allocates elastic iprovider 
-resource "aws_eip" "ngw_eip" {
+resource "aws_eip" "ngw-eip" {
     vpc = true
 }
 
